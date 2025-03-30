@@ -1,139 +1,134 @@
+"use client";
+
+import { motion } from "framer-motion";
 import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa6";
 import Image from "next/image";
 
 export default function LandingPage() {
+  const socialLinks = [
+    { href: "https://github.com/Valentine-Nkatha", icon: FaGithub, label: "GitHub" },
+    { href: "https://www.linkedin.com/in/valentine-nkatha-90abb4255/", icon: FaLinkedin, label: "LinkedIn" },
+    { href: "https://x.com/valnkatha", icon: FaTwitter, label: "Twitter" }
+  ];
+
   return (
-    <div>
-      <div className="bg-black text-white mb-8 sm:mb-12">
-        {/* Navigation */}
-        
+    <div className="bg-gradient-to-br from-black to-gray-900 text-white min-h-screen overflow-hidden">
+      {/* Animated Background Elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-yellow-400/10 rounded-full filter blur-3xl"></div>
+        <div className="absolute bottom-1/3 right-1/4 w-96 h-96 bg-emerald-400/10 rounded-full filter blur-3xl"></div>
+        <div className="absolute top-2/3 right-1/3 w-72 h-72 bg-purple-400/10 rounded-full filter blur-3xl"></div>
+      </div>
 
-        {/* Hero Section */}
-        <div className="flex min-h-[60vh] sm:min-h-[70vh] md:min-h-[80vh] items-center px-4 sm:px-6">
+      {/* Hero Section */}
+      <div className="relative flex min-h-screen items-center px-6 sm:px-12 lg:px-24">
+        <div className="container mx-auto flex flex-col md:flex-row items-center justify-between gap-12 lg:gap-16">
+          {/* Left Section: Text & Button */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="text-center md:text-left space-y-6 md:space-y-8 z-10"
+          >
+            <div className="relative inline-block">
+              <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight">
+                Hello<span className="text-yellow-400">.</span>
+              </h1>
+              <motion.div 
+                className="absolute -bottom-2 left-0 h-1 bg-yellow-400"
+                initial={{ width: 0 }}
+                animate={{ width: "100%" }}
+                transition={{ delay: 0.5, duration: 0.8 }}
+              />
+            </div>
             
-          <div className="container mx-auto">
-            <div className="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12">
-              {/* Text Content */}
-              <div className="w-full md:w-1/2 space-y-4 sm:space-y-6 text-center md:text-left">
-                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold">
-                  Hello<span className="text-yellow-400">.</span>
-                </h1>
-                <h2 className="text-xl sm:text-2xl md:text-3xl">
-                  I&apos;m Valentine Nkatha
-                </h2>
-                <p className="text-lg sm:text-xl text-gray-400">
-                  Software Developer
-                </p>
-
-                <button className="bg-yellow-400 text-white 
-                  px-4 sm:px-6 
-                  py-2 sm:py-3 
-                  text-sm sm:text-base
-                  rounded 
-                  hover:bg-yellow-200 
-                  transition-colors 
-                  hover:scale-105 
-                  transform duration-200">
-                     <a
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">
+              I&apos;m Valentine Nkatha
+            </h2>
+            
+            <p className="text-lg text-gray-400 max-w-md">
+              Software Developer crafting elegant solutions for complex problems
+            </p>
+            
+            {/* Download CV Button */}
+            <motion.a
               href="/documents/Valentine Nkatha Kinyua CV.pdf"
               download="Valentine Nkatha Kinyua CV.pdf"
-              className="text-white hover:text-[#010C04]"
+              className="inline-flex items-center bg-gradient-to-r from-yellow-400 to-yellow-500 
+                        text-black font-medium px-6 py-3 rounded-md 
+                        transition-all duration-300 hover:shadow-lg hover:shadow-yellow-400/20"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
             >
-                  Download CV
-                  </a>
-                </button>
-              </div>
-
-              {/* Image Section */}
-              <div className="w-full md:w-1/2 mt-8 md:mt-0">
-                <div className="relative 
-                  w-full max-w-[300px] sm:max-w-[400px] md:max-w-[500px] lg:max-w-[600px]
-                  h-[400px] sm:h-[500px] md:h-[600px] lg:h-[800px]
-                  mx-auto">
-                  {/* Blur Background */}
-                  <div className="absolute inset-0 bg-emerald-400/10 filter blur-xl"></div>
-                  
-                  {/* Main Image */}
-                  <Image
-                    src="/images/ValentineNkatha.jpg"
-                    alt="Developer Portrait"
-                    width={500}
-                    height={500}
-                    className="relative w-full h-full object-cover 
-                      grayscale contrast-125 brightness-90
-                      rounded-lg sm:rounded-xl md:rounded-2xl
-                      shadow-lg"
-                  />
-
-                  {/* Social Media Icons Overlay */}
-                  <div className="absolute 
-                    bottom-4 sm:bottom-6 md:bottom-8 
-                    right-4 sm:right-6 md:right-8 
-                    flex space-x-2 sm:space-x-3 md:space-x-4">
-                    {/* GitHub Icon */}
-                    <a
-              href="https://github.com/Valentine-Nkatha"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-                    <div className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 
-                      bg-black/50 
-                      rounded-full 
-                      flex items-center justify-center 
-                      hover:bg-black/70 
-                      transform hover:scale-110 
-                      transition-all duration-200 
-                      cursor-pointer">
-                      <FaGithub className="w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-4 md:h-4 
-                        text-white 
-                        hover:text-yellow-200" />
-                    </div>
-                    </a>
-
-                    {/* LinkedIn Icon */}
-                    <a
-              href="https://www.linkedin.com/in/valentine-nkatha-90abb4255/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-                    <div className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 
-                      bg-black/50 
-                      rounded-full 
-                      flex items-center justify-center 
-                      hover:bg-black/70 
-                      transform hover:scale-110 
-                      transition-all duration-200 
-                      cursor-pointer">
-                      <FaLinkedin className="w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-4 md:h-4 
-                        text-white 
-                        hover:text-yellow-200" />
-                    </div>
-                    </a>
-
-                    {/* Twitter Icon */}
-                    <a
-              href="https://x.com/valnkatha"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-                    <div className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 
-                      bg-black/50 
-                      rounded-full 
-                      flex items-center justify-center 
-                      hover:bg-black/70 
-                      transform hover:scale-110 
-                      transition-all duration-200 
-                      cursor-pointer">
-                      <FaTwitter className="w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-4 md:h-4 
-                        text-white 
-                        hover:text-yellow-200" />
-                    </div>
-                    </a>
-                  </div>
-                </div>
-              </div>
+              <span>Download CV</span>
+              <motion.svg 
+                xmlns="http://www.w3.org/2000/svg" 
+                className="h-5 w-5 ml-2" 
+                fill="none" 
+                viewBox="0 0 24 24" 
+                stroke="currentColor"
+                initial={{ y: -3 }}
+                animate={{ y: 3 }}
+                transition={{ repeat: Infinity, repeatType: "reverse", duration: 1 }}
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+              </motion.svg>
+            </motion.a>
+          </motion.div>
+          
+          {/* Right Section: Image & Socials */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="relative w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-xl z-10"
+          >
+            {/* Animated Glow Effect */}
+            <motion.div 
+              className="absolute inset-0 bg-gradient-to-tr from-emerald-400/20 to-purple-400/20 rounded-2xl"
+              animate={{ 
+                filter: ["blur(20px)", "blur(30px)", "blur(20px)"],
+                opacity: [0.4, 0.7, 0.4]
+              }}
+              transition={{ 
+                repeat: Infinity, 
+                duration: 5,
+                ease: "easeInOut"
+              }}
+            />
+            
+            {/* Frame around the image */}
+            <div className="relative border border-white/10 p-2 rounded-2xl backdrop-blur-sm bg-black/30 shadow-2xl">
+              {/* Profile Image */}
+              <Image
+                src="/images/ValentineNkatha.jpg"
+                alt="Developer Portrait"
+                width={500}
+                height={500}
+                className="w-full h-auto object-cover grayscale hover:grayscale-0 contrast-125 brightness-90
+                        rounded-xl shadow-lg transition-all duration-700"
+              />
             </div>
-          </div>
+            
+            {/* Social Media Icons */}
+            <div className="absolute -bottom-6 right-6 flex space-x-4">
+              {socialLinks.map(({ href, icon: Icon, label }, idx) => (
+                <motion.a
+                  key={idx}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.2, y: -5 }}
+                  whileTap={{ scale: 0.9 }}
+                  className="bg-black/70 p-3 rounded-full hover:bg-yellow-400 hover:text-black
+                          transition-all duration-300 shadow-lg"
+                  aria-label={label}
+                >
+                  <Icon className="w-5 h-5" />
+                </motion.a>
+              ))}
+            </div>
+          </motion.div>
         </div>
       </div>
     </div>
